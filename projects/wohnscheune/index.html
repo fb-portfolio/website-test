@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FB — Wohnscheune</title>
+  <link rel="stylesheet" href="../../main.css" />
+  <script src="../../main.js" defer></script>
+  <style>
+    /* ── Page-specific styles only ── */
+
+    /* HERO */
+    .hero {
+      width: 100%;
+      height: 92vh;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* PROJECT INTRO */
+    .project-intro {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .intro-title {
+      padding: 72px 56px;
+      border-right: 1px solid var(--light);
+    }
+
+    .intro-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gray);
+      margin-bottom: 40px;
+      transition: gap 0.2s, color 0.2s;
+    }
+
+    .intro-back:hover { gap: 12px; color: var(--black); }
+    .intro-back::before { content: '←'; }
+
+    .intro-title h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      margin-bottom: 32px;
+    }
+
+    .intro-title h1 em {
+      font-style: italic;
+      font-weight: 300;
+      display: block;
+    }
+
+    .intro-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .intro-meta span {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .intro-text {
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .intro-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 20px;
+      max-width: 560px;
+    }
+
+    .intro-text p:last-of-type { margin-bottom: 0; }
+
+    .read-more-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      padding: 0;
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .read-more-btn:hover { color: var(--black); gap: 12px; }
+    .read-more-btn .arrow { transition: transform 0.3s; display: inline-block; }
+    .read-more-btn.open .arrow { transform: rotate(180deg); }
+
+    .extra-text { display: none; }
+    .extra-text.visible { display: block; }
+    .extra-text p { margin-top: 20px; }
+
+    @media (max-width: 900px) {
+      .hero { height: 60vw; min-height: 260px; }
+      .project-intro { grid-template-columns: 1fr; }
+      .intro-title { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--light); }
+      .intro-text { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="../../index.html">fb</a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../projects.html">Architecture</a></li>
+      <li><a href="../../web.html">Web</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../projects.html">Architecture</a></li>
+      <li><a href="../../web.html">Web</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero page-start fade-up-1">
+    <img src="images/rendering_garden.jpg" alt="Wohnscheune — Garden View" data-lightbox />
+  </div>
+
+  <!-- INTRO -->
+  <div class="project-intro fade-up-2">
+    <div class="intro-title">
+      <a class="intro-back" href="../../projects.html">Architecture</a>
+      <h1>Wohn-<br><em>scheune</em></h1>
+      <div class="intro-meta">
+        <span>Saargau, Germany</span>
+        <span>Architectural Draft</span>
+        <span>Ongoing</span>
+      </div>
+    </div>
+    <div class="intro-text">
+      <p>A modern reinterpretation of the Trierer Einhaus — a traditional farmhouse typology of the Saargau region. The living barn responds to its context through form, material, and scale, without replicating tradition.</p>
+      <p>The site sits between two 19th-century farmhouses. Designed as a double house with a corrugated metal facade, the building complements the existing ensemble while speaking the language of contemporary construction.</p>
+
+      <div class="extra-text" id="extraText">
+        <p>The identity of a village is strongly influenced by its environment and history. Only in recent decades have humans had the ability to overcome the constraints of locality — knowledge and materials are now globally accessible, and traditional construction methods can be replaced by industrial production.</p>
+        <p>This progress has resulted in a loss of identity for traditional settlements. Vernacular architecture does not mean sticking to traditions — it involves finding the essence of a place while making use of the possibilities offered by the technology of our time. In the Saargau region, the "Trierer Einhaus" features an elongated form with living house, stable, and barn aligned — a clear geometric order shaped by Roman settlement patterns.</p>
+      </div>
+
+      <button class="read-more-btn" id="readMoreBtn" onclick="toggleText()">
+        Read more <span class="arrow">↓</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- RENDERINGS -->
+  <div class="section-label">Renderings</div>
+
+  <div class="img-full img-tall">
+    <img src="images/rendering_exterior.jpg" alt="Exterior — South-West" data-lightbox />
+  </div>
+  <div class="captions"><span>Exterior — South-West</span></div>
+
+  <!-- DRAWINGS -->
+  <div class="divider"></div>
+  <div class="section-label">Elevations</div>
+
+  <div class="img-band img-band-plan">
+    <img src="images/AnsichtN.jpg" alt="View North" data-lightbox />
+    <img src="images/AnsichtW.jpg" alt="View East" data-lightbox />
+    <img src="images/AnsichtS.jpg" alt="View South" data-lightbox />
+  </div>
+  <div class="captions">
+    <span>View North</span>
+    <span>View East</span>
+    <span>View South</span>
+  </div>
+
+  <div class="img-full img-plan">
+    <img src="images/Draufsicht.jpg" alt="Top View" data-lightbox />
+  </div>
+  <div class="captions"><span>Top View</span></div>
+
+  <div class="img-full img-plan">
+    <img src="images/Lageplan1.2000.jpg" alt="Siteplan 1:2000" data-lightbox style="object-position: center bottom;" />
+  </div>
+  <div class="captions"><span>Siteplan 1:2000</span></div>
+
+  <!-- CONCEPT -->
+  <div class="divider"></div>
+  <div class="section-label">Concept</div>
+
+  <div class="img-band">
+    <img src="images/Winkelhof_small.jpg" alt="Context — Protected Farmhouse" data-lightbox />
+    <img src="images/sketchWohnscheune.jpg" alt="Sketch — Composition of Buildings" data-lightbox />
+  </div>
+  <div class="captions">
+    <span>Protected Farmhouse — Context</span>
+    <span>Sketch — Composition of Buildings</span>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- NEXT PROJECT -->
+  <a class="next-project" href="../the-tower-in-the-city/index.html">
+    <div>
+      <p class="next-label">Next Project</p>
+      <p class="next-title">The Tower <em>in the City</em></p>
+    </div>
+    <span class="next-arrow">→</span>
+  </a>
+
+  <footer>
+    <p>fb — Architecture &amp; Design</p>
+    <p><a href="../../impressum.html">Impressum</a></p>
+  </footer>
+
+  <script src="../../band.js"></script>
+  <script>
+    // Burger menu
+    const burger = document.getElementById('burger');
+    const overlay = document.getElementById('navOverlay');
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      overlay.classList.toggle('open');
+      document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+    });
+
+    // Close on link click
+    overlay.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Read more toggle
+    function toggleText() {
+      const extra = document.getElementById('extraText');
+      const btn = document.getElementById('readMoreBtn');
+      extra.classList.toggle('visible');
+      btn.classList.toggle('open');
+      btn.childNodes[0].textContent = extra.classList.contains('visible') ? 'Read less ' : 'Read more ';
+    }
+  </script>
+
+</body>
+</html>

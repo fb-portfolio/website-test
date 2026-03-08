@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FB — Historicum</title>
+  <link rel="stylesheet" href="../../main.css" />
+  <script src="../../main.js" defer></script>
+  <script src="../../band.js" defer></script>
+  <style>
+    .hero { width: 100%; height: 80vh; overflow: hidden; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+
+    .project-intro {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .intro-title { padding: 64px 56px; border-right: 1px solid var(--light); }
+
+    .intro-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gray);
+      margin-bottom: 40px;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .intro-back:hover { gap: 12px; color: var(--black); }
+    .intro-back::before { content: '←'; }
+
+    .intro-title h1 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      margin-bottom: 32px;
+    }
+    .intro-title h1 em { font-style: italic; font-weight: 300; display: block; }
+
+    .intro-meta { display: flex; flex-direction: column; gap: 6px; }
+    .intro-meta span { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); }
+
+    .intro-text { padding: 64px 64px; display: flex; flex-direction: column; justify-content: center; }
+    .intro-text p { font-size: 1rem; line-height: 1.85; color: #444; max-width: 560px; }
+
+    @media (max-width: 900px) {
+      .hero { height: 56vw; min-height: 240px; }
+      .project-intro { grid-template-columns: 1fr; }
+      .intro-title { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--light); }
+      .intro-text { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="../../index.html">fb</a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../projects.html">Architecture</a></li>
+      <li><a href="../../web.html">Web</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../projects.html">Architecture</a></li>
+      <li><a href="../../web.html">Web</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="hero page-start">
+    <img src="images/Rendering außen.jpg" alt="Historicum — Exterior Rendering" data-lightbox />
+  </div>
+
+  <div class="project-intro">
+    <div class="intro-title">
+      <a class="intro-back" href="../../projects.html">Architecture</a>
+      <h1>Histori-<br><em>cum</em></h1>
+      <div class="intro-meta">
+        <span>Aachen Region, Germany</span>
+        <span>Study Project</span>
+        <span>2019</span>
+      </div>
+    </div>
+    <div class="intro-text">
+      <p>A city archive for the Aachen region — a compact building that mediates between an existing historic villa and the urban fabric. The design negotiates public access and archival storage through a clear spatial sequence of entrance, reading room, and stacks.</p>
+    </div>
+  </div>
+
+  <!-- SITE & PLANS -->
+  <div class="section-label">Site & Plans</div>
+
+  <div class="img-full img-plan">
+    <img src="images/Lageplan.jpg" alt="Siteplan" data-lightbox />
+  </div>
+  <div class="captions"><span>Siteplan</span></div>
+
+  <div class="img-band img-band-plan" style="padding-top: 12px;">
+    <img src="images/Grundriss.jpg" alt="Floor Plan" data-lightbox />
+    <img src="images/Ansicht front.jpg" alt="View Front" data-lightbox />
+  </div>
+  <div class="captions">
+    <span>Floor Plan</span>
+    <span>View Front</span>
+  </div>
+
+  <!-- ELEVATIONS & SECTIONS -->
+  <div class="divider"></div>
+  <div class="section-label">Elevations & Sections</div>
+
+  <div class="img-band img-band-plan">
+    <img src="images/Ansicht seite.jpg" alt="View Side" data-lightbox />
+    <img src="images/Ansicht hinten.jpg" alt="View Back" data-lightbox />
+  </div>
+  <div class="captions">
+    <span>View Side</span>
+    <span>View Back</span>
+  </div>
+
+  <div class="img-band img-band-plan" style="padding-top: 12px;">
+    <img src="images/Schnitt.jpg" alt="Section" data-lightbox />
+    <img src="images/SchnittQ.jpg" alt="Section" data-lightbox />
+  </div>
+  <div class="captions">
+    <span>Section</span>
+    <span>Cross Section</span>
+  </div>
+
+  <div class="img-full img-plan" style="padding-top: 12px;">
+    <img src="images/SchnittQ50.jpg" alt="Section 1:50" data-lightbox />
+  </div>
+  <div class="captions"><span>Section 1:50</span></div>
+
+  <!-- RENDERING -->
+  <div class="divider"></div>
+  <div class="section-label">Interior</div>
+
+  <div class="img-full img-tall">
+    <img src="images/Rendering innen.jpg" alt="Interior Rendering" data-lightbox
+         style="object-position: center 40%;" />
+  </div>
+  <div class="captions"><span>Interior Rendering</span></div>
+
+  <!-- MODEL -->
+  <div class="divider"></div>
+  <div class="section-label">Model</div>
+
+  <div class="img-band">
+    <img src="images/modell1.JPG" alt="Site Model" data-lightbox />
+    <img src="images/modell3.JPG" alt="Model" data-lightbox />
+    <img src="images/modell2.JPG" alt="Section Model 1:50" data-lightbox />
+  </div>
+  <div class="captions">
+    <span>Site Model</span>
+    <span>Model</span>
+    <span>Section Model 1:50</span>
+  </div>
+
+  <div class="spacer"></div>
+
+  <a class="next-project" href="../gruenguertel/index.html">
+    <div>
+      <p class="next-label">Next Project</p>
+      <p class="next-title"><em>Grün-</em>gürtel</p>
+    </div>
+    <span class="next-arrow">→</span>
+  </a>
+
+  <footer>
+    <p>fb — Architecture &amp; Design</p>
+    <p><a href="../../impressum.html">Impressum</a></p>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const overlay = document.getElementById('navOverlay');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      overlay.classList.toggle('open');
+      document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+    });
+    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FB — Grüngürtel</title>
+  <link rel="stylesheet" href="../../main.css" />
+  <script src="../../main.js" defer></script>
+  <script src="../../band.js" defer></script>
+  <style>
+    .hero { width: 100%; height: 80vh; overflow: hidden; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
+
+    .project-intro {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .intro-title { padding: 64px 56px; border-right: 1px solid var(--light); }
+
+    .intro-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gray);
+      margin-bottom: 40px;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .intro-back:hover { gap: 12px; color: var(--black); }
+    .intro-back::before { content: '←'; }
+
+    .intro-title h1 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      margin-bottom: 32px;
+    }
+    .intro-title h1 em { font-style: italic; font-weight: 300; display: block; }
+
+    .intro-meta { display: flex; flex-direction: column; gap: 6px; }
+    .intro-meta span { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); }
+
+    .intro-text { padding: 64px 64px; display: flex; flex-direction: column; justify-content: center; }
+    .intro-text p { font-size: 1rem; line-height: 1.85; color: #444; max-width: 560px; }
+
+    /* Grid für die vielen Analyse-Karten */
+    .analysis-grid {
+      padding: 24px 56px 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+    }
+
+    .analysis-grid img {
+      width: 100%;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    @media (max-width: 900px) {
+      .hero { height: 56vw; min-height: 240px; }
+      .project-intro { grid-template-columns: 1fr; }
+      .intro-title { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--light); }
+      .intro-text { padding: 40px 24px; }
+      .analysis-grid { padding: 16px 24px 0; grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="../../index.html">fb</a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../projects.html">Architecture</a></li>
+      <li><a href="../../web.html">Web</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../projects.html">Architecture</a></li>
+      <li><a href="../../web.html">Web</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="hero page-start">
+    <img src="images/schwarzplan.jpg" alt="Grüngürtel — Black Plan" data-lightbox
+         style="object-position: center center; filter: invert(0);" />
+  </div>
+
+  <div class="project-intro">
+    <div class="intro-title">
+      <a class="intro-back" href="../../projects.html">Architecture</a>
+      <h1>Grün-<br><em>gürtel</em></h1>
+      <div class="intro-meta">
+        <span>Cologne, Germany</span>
+        <span>Urban Planning — Group Project</span>
+        <span>2017</span>
+      </div>
+    </div>
+    <div class="intro-text">
+      <p>An urban planning proposal for a new residential quarter within Cologne's green belt — connecting existing neighbourhoods through a network of public space, mixed typologies, and green infrastructure.</p>
+    </div>
+  </div>
+
+  <!-- CONCEPT & DRAFT -->
+  <div class="section-label">Concept & Draft</div>
+
+  <div class="img-full img-plan">
+    <img src="images/konzept_large.jpg" alt="Concept" data-lightbox />
+  </div>
+  <div class="captions"><span>Concept</span></div>
+
+  <div class="img-full img-plan" style="padding-top: 12px;">
+    <img src="images/Entwurf_large.jpg" alt="Draft" data-lightbox />
+  </div>
+  <div class="captions"><span>Draft</span></div>
+
+  <!-- TYPOLOGIES -->
+  <div class="divider"></div>
+  <div class="section-label">Typologies</div>
+
+  <div class="img-full img-plan">
+    <img src="images/typo.jpg" alt="Typologies" data-lightbox />
+  </div>
+  <div class="captions"><span>Typologies</span></div>
+
+  <!-- ANALYSIS -->
+  <div class="divider"></div>
+  <div class="section-label">Analysis</div>
+
+  <div class="analysis-grid">
+    <img src="images/verkehrsanalyse.jpg" alt="Traffic Analysis" data-lightbox />
+    <img src="images/nutzungsplan.jpg" alt="Land Use Plan" data-lightbox />
+    <img src="images/historie.jpg" alt="Historic Structure" data-lightbox />
+    <img src="images/grünstruktur.jpg" alt="Green Structure" data-lightbox />
+    <img src="images/bau und strukt.jpg" alt="Building Structure" data-lightbox />
+    <img src="images/raumkanten.jpg" alt="Space Boundaries" data-lightbox />
+    <img src="images/negativ.jpg" alt="Positive Aspects & Chances" data-lightbox />
+    <img src="images/positiv.jpg" alt="Negative Aspects & Risks" data-lightbox />
+  </div>
+  <div class="captions" style="display: grid; grid-template-columns: 1fr 1fr; padding: 10px 56px 0; gap: 4px;">
+    <span>Traffic Analysis</span><span>Land Use Plan</span>
+    <span>Historic Structure</span><span>Green Structure</span>
+    <span>Building Structure</span><span>Space Boundaries</span>
+    <span>Positive Aspects</span><span>Negative Aspects</span>
+  </div>
+
+  <!-- SECTION & RENDERING -->
+  <div class="divider"></div>
+  <div class="section-label">Section & Rendering</div>
+
+  <div class="img-full img-plan">
+    <img src="images/schnitt.jpg" alt="Section" data-lightbox />
+  </div>
+  <div class="captions"><span>Section</span></div>
+
+  <div class="img-full img-tall" style="padding-top: 12px;">
+    <img src="images/render.jpg" alt="Rendering" data-lightbox
+         style="object-position: center 40%;" />
+  </div>
+  <div class="captions"><span>Rendering</span></div>
+
+  <div class="spacer"></div>
+
+  <a class="next-project" href="../quartier-eselsweg/index.html">
+    <div>
+      <p class="next-label">Next Project</p>
+      <p class="next-title">Quartier <em>Eselsweg</em></p>
+    </div>
+    <span class="next-arrow">→</span>
+  </a>
+
+  <footer>
+    <p>fb — Architecture &amp; Design</p>
+    <p><a href="../../impressum.html">Impressum</a></p>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const overlay = document.getElementById('navOverlay');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      overlay.classList.toggle('open');
+      document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+    });
+    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }));
+  </script>
+
+</body>
+</html>

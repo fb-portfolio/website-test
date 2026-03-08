@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FB — The Tower in the City</title>
+  <link rel="stylesheet" href="../../main.css" />
+  <script src="../../main.js" defer></script>
+  <script src="../../band.js" defer></script>
+  <style>
+    /* ── Page-specific styles ── */
+
+    /* HERO — Fotomontage, volle Höhe */
+    .hero {
+      width: 100%;
+      height: 90vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+
+    /* PROJECT INTRO */
+    .project-intro {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .intro-title {
+      padding: 72px 56px;
+      border-right: 1px solid var(--light);
+    }
+
+    .intro-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gray);
+      margin-bottom: 40px;
+      transition: gap 0.2s, color 0.2s;
+    }
+
+    .intro-back:hover { gap: 12px; color: var(--black); }
+    .intro-back::before { content: '←'; }
+
+    .intro-title h1 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      margin-bottom: 32px;
+    }
+
+    .intro-title h1 em {
+      font-style: italic;
+      font-weight: 300;
+      display: block;
+    }
+
+    .intro-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .intro-meta span {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .intro-text {
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .intro-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 20px;
+      max-width: 560px;
+    }
+
+    .intro-text p:last-of-type { margin-bottom: 0; }
+
+    .read-more-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      padding: 0;
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .read-more-btn:hover { color: var(--black); gap: 12px; }
+    .read-more-btn .arrow { transition: transform 0.3s; display: inline-block; }
+    .read-more-btn.open .arrow { transform: rotate(180deg); }
+
+    .extra-text { display: none; }
+    .extra-text.visible { display: block; }
+    .extra-text p { margin-top: 20px; }
+
+    /* VORSTUDIE — grauer Hintergrund als visueller Trenner */
+    .section-preliminary {
+      background: var(--light);
+      padding: 56px 56px 0;
+      margin-top: 80px;
+    }
+
+    .section-preliminary .prelim-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .section-preliminary .prelim-title {
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+    }
+
+    .section-preliminary .prelim-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .section-preliminary .img-band,
+    .section-preliminary .img-full,
+    .section-preliminary .img-band-plan {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .prelim-spacer { height: 56px; background: var(--light); }
+
+    @media (max-width: 900px) {
+      .hero { height: 60vw; min-height: 280px; }
+      .project-intro { grid-template-columns: 1fr; }
+      .intro-title { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--light); }
+      .intro-text { padding: 40px 24px; }
+      .section-preliminary { padding: 40px 24px 0; margin-top: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="../../index.html">fb</a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../projects.html">Architecture</a></li>
+      <li><a href="../../web.html">Web</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../projects.html">Architecture</a></li>
+      <li><a href="../../web.html">Web</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO — Fotomontage B&W + Farbe -->
+  <div class="hero page-start fade-up-1">
+    <img src="images/1.jpg" alt="The Tower in the City — Photomontage" data-lightbox />
+  </div>
+
+  <!-- INTRO -->
+  <div class="project-intro fade-up-2">
+    <div class="intro-title">
+      <a class="intro-back" href="../../projects.html">Architecture</a>
+      <h1>The Tower<br><em>in the City</em></h1>
+      <div class="intro-meta">
+        <span>Prague, Czech Republic</span>
+        <span>Study Project</span>
+        <span>2018 – 2019</span>
+      </div>
+    </div>
+    <div class="intro-text">
+      <p>The birthplace of Czech sailing lies in Podolí, 3 km south of Prague's city center. Here stands the venerable clubhouse of the Czech Yacht Club — built entirely of wood in 1912, continuously expanded, and still full of charm.</p>
+      <p>A campanile is a freestanding bell tower beside a church, without direct connection. Just as a campanile extends a church, this tower extends the yacht club — placed on the opposite side of the dam, giving each building its own facade toward the river.</p>
+
+      <div class="extra-text" id="extraText">
+        <p>The existing building faces the harbor side, so the tower is positioned on the river side. This way neither building overshadows the other — instead, the tower extends the club's presence toward the Moldau.</p>
+        <p>To emphasize the unity of both buildings, the wooden construction method is adopted. However, the vertical load-bearing is achieved through external steel supports, making the facade more open and transparent. On the ground floor, a pier-like wooden deck invites visitors to step closer to the waterfront.</p>
+        <p>The tower is intended as a guesthouse for the yacht club.</p>
+      </div>
+
+      <button class="read-more-btn" id="readMoreBtn" onclick="toggleText()">
+        Read more <span class="arrow">↓</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- CONTEXT -->
+  <div class="section-label">Context</div>
+
+  <div class="img-full img-plan">
+    <img src="images/2.jpg" alt="Siteplan — Podolí, Prague" data-lightbox
+         style="object-position: center center;" />
+  </div>
+  <div class="captions"><span>Siteplan — Podolí, Prague</span></div>
+
+  <!-- VIEWS & SECTION -->
+  <div class="divider"></div>
+  <div class="section-label">Elevations & Section</div>
+
+  <div class="img-band img-band-plan">
+    <img src="images/8.jpg" alt="View East" data-lightbox />
+    <img src="images/3.jpg" alt="View South" data-lightbox />
+    <img src="images/7.jpg" alt="Section" data-lightbox />
+  </div>
+  <div class="captions">
+    <span>View East</span>
+    <span>View South</span>
+    <span>Section</span>
+  </div>
+
+  <!-- FLOOR PLAN -->
+  <div class="divider"></div>
+  <div class="section-label">Floor Plan</div>
+
+  <div class="img-full img-plan">
+    <img src="images/6.jpg" alt="Floor Plan" data-lightbox />
+  </div>
+  <div class="captions"><span>Floor Plan</span></div>
+
+  <!-- RENDERING -->
+  <div class="divider"></div>
+  <div class="section-label">Rendering</div>
+
+  <div class="img-full img-tall">
+    <img src="images/4.jpg" alt="Rendering — River View" data-lightbox
+         style="object-position: center 30%;" />
+  </div>
+  <div class="captions"><span>Rendering — River View</span></div>
+
+  <div class="img-full" style="padding-top: 12px;">
+    <img src="images/5.jpg" alt="Rendering — Entrance" data-lightbox
+         style="object-position: center 40%;" />
+  </div>
+  <div class="captions"><span>Rendering — Entrance</span></div>
+
+  <!-- PRELIMINARY EXERCISE -->
+  <div class="section-preliminary">
+    <p class="prelim-label">Preliminary Exercise</p>
+    <h2 class="prelim-title">La Rotonda <em>as a Tower</em></h2>
+
+    <div class="img-band img-band-plan" style="padding: 32px 0 0;">
+      <img src="images/rotonda2.jpg" alt="La Rotonda — Isometric & Rendering" data-lightbox />
+      <img src="images/Rotonda1.jpg" alt="La Rotonda — Plans" data-lightbox />
+    </div>
+    <div class="captions" style="padding: 10px 0 0;">
+      <span>Isometric & Rendering</span>
+      <span>Plans</span>
+    </div>
+  </div>
+  <div class="prelim-spacer"></div>
+
+  <!-- NEXT PROJECT -->
+  <a class="next-project" href="../mediterraneum/index.html">
+    <div>
+      <p class="next-label">Next Project</p>
+      <p class="next-title"><em>Mediter-</em>raneum</p>
+    </div>
+    <span class="next-arrow">→</span>
+  </a>
+
+  <footer>
+    <p>fb — Architecture &amp; Design</p>
+    <p><a href="../../impressum.html">Impressum</a></p>
+  </footer>
+
+  <script>
+    const burger  = document.getElementById('burger');
+    const overlay = document.getElementById('navOverlay');
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      overlay.classList.toggle('open');
+      document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+    });
+
+    overlay.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    function toggleText() {
+      const extra = document.getElementById('extraText');
+      const btn   = document.getElementById('readMoreBtn');
+      extra.classList.toggle('visible');
+      btn.classList.toggle('open');
+      btn.childNodes[0].textContent = extra.classList.contains('visible') ? 'Read less ' : 'Read more ';
+    }
+  </script>
+
+</body>
+</html>

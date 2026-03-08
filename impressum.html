@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FB — Impressum</title>
+  
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #fafaf8;
+      --black: #1a1a18;
+      --gray: #8a8a85;
+      --light: #eeecea;
+      --font: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--font);
+      font-weight: 300;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 56px;
+      background: var(--white);
+      border-bottom: 1px solid var(--light);
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    /* LAYOUT */
+    .impressum-wrap {
+      margin-top: 85px;
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .impressum-sidebar {
+      padding: 80px 56px;
+      border-right: 1px solid var(--light);
+    }
+
+    .impressum-sidebar h1 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .impressum-sidebar h1 em {
+      font-style: italic;
+      font-weight: 300;
+      display: block;
+    }
+
+    .impressum-sidebar p {
+      font-size: 0.78rem;
+      line-height: 1.65;
+      color: var(--gray);
+      margin-top: 24px;
+    }
+
+    .impressum-content {
+      padding: 80px 64px;
+    }
+
+    .impressum-section {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .impressum-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .impressum-section h2 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .impressum-section p,
+    .impressum-section li {
+      font-size: 0.875rem;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 12px;
+    }
+
+    .impressum-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .impressum-section a {
+      color: var(--black);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .notice {
+      padding: 20px 24px;
+      background: var(--light);
+      font-size: 0.78rem;
+      line-height: 1.65;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    footer {
+      padding: 40px 56px;
+      border-top: 1px solid var(--light);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .impressum-wrap { grid-template-columns: 1fr; }
+      .impressum-sidebar { padding: 56px 24px 40px; border-right: none; border-bottom: 1px solid var(--light); }
+      .impressum-content { padding: 48px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; gap: 8px; }
+    }
+  </style>
+  <link rel="stylesheet" href="main.css" />
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">fb</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Architecture</a></li>
+      <li><a href="web.html">Web</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Architecture</a></li>
+      <li><a href="web.html">Web</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="impressum-wrap">
+    <div class="impressum-sidebar">
+      <h1>Impressum<br><em>& Datenschutz</em></h1>
+      <p>Angaben gemäß § 5 TMG und Datenschutzerklärung gemäß DSGVO.</p>
+    </div>
+
+    <div class="impressum-content">
+
+      <!-- IMPRESSUM -->
+      <div class="impressum-section">
+        <h2>Impressum</h2>
+        <div class="notice">
+          Diese Website dient ausschließlich der Präsentation eines privaten Portfolios und verfolgt keine kommerziellen Zwecke.
+        </div>
+        <p>
+          <strong>F. B.</strong><br>
+          Aachen, Deutschland<br>
+          <!-- Add your address here when ready -->
+          E-Mail: <a href="/cdn-cgi/l/email-protection#c5ada0a9a9aa85a0bda4a8b5a9a0eba6aaa8"><span class="__cf_email__" data-cfemail="076f626b6b6847627f666a776b622964686a">[email&#160;protected]</span></a>
+        </p>
+        <p style="margin-top: 16px; font-size: 0.78rem; color: var(--gray);">
+          Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: F. B., Aachen
+        </p>
+      </div>
+
+      <!-- HAFTUNG -->
+      <div class="impressum-section">
+        <h2>Haftungsausschluss</h2>
+        <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
+        <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte kein Einfluss besteht. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+      </div>
+
+      <!-- URHEBERRECHT -->
+      <div class="impressum-section">
+        <h2>Urheberrecht</h2>
+        <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors.</p>
+      </div>
+
+      <!-- DATENSCHUTZ -->
+      <div class="impressum-section" id="datenschutz">
+        <h2>Datenschutzerklärung</h2>
+        <p><strong>Verantwortlicher</strong><br>
+        F. B., Aachen — <a href="/cdn-cgi/l/email-protection#2f474a4343406f4a574e425f434a014c4042"><span class="__cf_email__" data-cfemail="48202d242427082d30292538242d662b2725">[email&#160;protected]</span></a></p>
+
+        <p><strong>Hosting</strong><br>
+        Diese Website wird über GitHub Pages (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet. GitHub kann beim Aufruf der Website technische Daten (z. B. IP-Adresse, Zeitpunkt des Zugriffs) erfassen. Weitere Informationen finden sich in der <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+
+        <p><strong>Kontaktformular</strong><br>
+        Wenn Sie das Kontaktformular nutzen, werden die angegebenen Daten (Name, E-Mail-Adresse, Nachricht) zur Bearbeitung Ihrer Anfrage verarbeitet. Die Daten werden über Formspree (Formspree Inc., USA) übertragen und nicht an Dritte weitergegeben. Nach Abschluss der Bearbeitung werden die Daten gelöscht. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).</p>
+
+        <p><strong>Schriftarten</strong><br>
+        Diese Website verwendet Google Fonts (Google LLC, USA). Beim Laden der Seite wird eine Verbindung zu Google-Servern hergestellt, dabei kann die IP-Adresse übertragen werden. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Datenschutzerklärung</a>.</p>
+
+        <p><strong>Ihre Rechte</strong><br>
+        Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie das Recht auf Datenübertragbarkeit. Anfragen richten Sie bitte an die oben genannte E-Mail-Adresse.</p>
+
+        <p><strong>Beschwerderecht</strong><br>
+        Sie haben das Recht, sich bei einer Aufsichtsbehörde zu 

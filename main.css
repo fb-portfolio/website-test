@@ -1,0 +1,473 @@
+/* ============================================================
+   FB PORTFOLIO — main.css
+   Central stylesheet — import in every page
+   ============================================================ */
+
+/* ============================================================
+   FONTS — local variable font (DSGVO-konform)
+   ============================================================ */
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-VariableFont_wght.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-Italic-VariableFont_wght.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* RESET */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* VARIABLES */
+:root {
+  --white: #fafaf8;
+  --black: #1a1a18;
+  --gray: #8a8a85;
+  --light: #eeecea;
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* BASE */
+html { font-size: 16px; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font);
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 56px;
+  background: var(--white);
+  border-bottom: 1px solid var(--light);
+  /* Hide-on-scroll transition */
+  transition: transform 0.35s ease;
+}
+
+nav.nav-hidden {
+  transform: translateY(-100%);
+}
+
+.nav-logo {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: var(--black);
+  z-index: 201;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gray);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--black); }
+
+/* BURGER BUTTON — hidden on desktop */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 201;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--black);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Burger open state */
+.burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile nav overlay */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: var(--white);
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 56px;
+}
+
+.nav-overlay.open { display: flex; }
+
+.nav-overlay .nav-links {
+  flex-direction: column;
+  gap: 0;
+}
+
+.nav-overlay .nav-links li {
+  border-bottom: 1px solid var(--light);
+  width: 100%;
+}
+
+.nav-overlay .nav-links a {
+  display: block;
+  padding: 20px 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--black);
+}
+
+.nav-overlay .nav-links a:hover { color: var(--gray); }
+
+/* ============================================================
+   PAGE OFFSET
+   ============================================================ */
+
+.page-start { margin-top: 85px; }
+
+/* ============================================================
+   SECTION LABEL
+   ============================================================ */
+
+.section-label {
+  padding: 48px 56px 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* ============================================================
+   IMAGE BLOCKS
+   ============================================================ */
+
+/* Full width — single image */
+.img-full { padding: 24px 56px 0; }
+.img-full img {
+  width: 100%;
+  display: block;
+  height: 72vh;
+  object-fit: cover;
+}
+.img-full.img-tall img  { height: 88vh; }
+.img-full.img-short img { height: 52vh; }
+
+/* Plans: full width, cropped to 60vh like other images */
+.img-full.img-plan { padding: 24px 56px 0; }
+.img-full.img-plan img {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* ── IMG-BAND ───────────────────────────────────────────────
+   Justified row: JS (band.js) sets each img's width in px.
+   Default: object-fit cover (photos).
+   .img-band-plan: natural height, no crop (drawings).
+   ──────────────────────────────────────────────────────── */
+.img-band {
+  padding: 24px 56px 0;
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.img-band img {
+  display: block;
+  object-fit: cover;
+  height: 50vh; /* JS overrides width; height is the shared row height */
+  flex-shrink: 0;
+}
+
+/* Plan band: no crop, height follows proportions from JS width */
+.img-band.img-band-plan img {
+  height: auto;
+  object-fit: unset;
+}
+
+/* Captions — same padding, columns match band count via modifier */
+.captions { padding: 10px 56px 0; display: flex; gap: 4px; }
+.captions span {
+  flex: 1;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* ============================================================
+   DIVIDER & SPACER
+   ============================================================ */
+
+.divider {
+  margin: 56px 56px 0;
+  border: none;
+  border-top: 1px solid var(--light);
+}
+
+.spacer    { height: 80px; }
+.spacer-sm { height: 40px; }
+
+/* ============================================================
+   NEXT PROJECT LINK
+   ============================================================ */
+
+.next-project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 64px 56px;
+  text-decoration: none;
+  color: var(--black);
+  border-top: 1px solid var(--light);
+  transition: background 0.2s;
+  margin-top: 80px;
+}
+
+.next-project:hover { background: var(--light); }
+
+.next-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+
+.next-title {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.next-title em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.next-arrow {
+  font-size: 2.5rem;
+  color: var(--gray);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer {
+  padding: 40px 56px;
+  border-top: 1px solid var(--light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-size: 0.72rem;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+}
+
+footer a {
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover { color: var(--black); }
+
+/* ============================================================
+   LIGHTBOX  (main.js)
+   ============================================================ */
+
+#lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(26, 26, 24, 0.96);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#lb-overlay.lb-open { display: flex; }
+
+.lb-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 80px 120px 60px;
+  cursor: default;
+}
+
+.lb-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  cursor: default !important;
+  transition: opacity 0.15s ease;
+}
+
+.lb-img.lb-fade { opacity: 0; }
+
+.lb-caption {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.lb-close {
+  position: absolute;
+  top: 28px; right: 36px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+  font-family: var(--font);
+  transition: color 0.2s;
+}
+.lb-close:hover { color: #fff; }
+
+.lb-prev, .lb-next {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 16px 20px;
+  transition: color 0.2s;
+  line-height: 1;
+}
+.lb-prev:hover, .lb-next:hover { color: #fff; }
+.lb-prev { left: 16px; }
+.lb-next { right: 16px; }
+
+@media (max-width: 900px) {
+  .lb-img-wrap { padding: 64px 16px 52px; }
+  .lb-prev { left: 4px; }
+  .lb-next { right: 4px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fadeUp 0.8s ease both; }
+.fade-up-1 { animation: fadeUp 0.8s ease 0.1s both; }
+.fade-up-2 { animation: fadeUp 0.8s ease 0.2s both; }
+.fade-up-3 { animation: fadeUp 0.8s ease 0.3s both; }
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  nav {
+    padding: 20px 24px;
+  }
+
+  /* Show burger, hide desktop links */
+  .burger { display: flex; }
+  nav > .nav-links { display: none; }
+
+  .nav-overlay { padding: 0 24px; }
+
+  .page-start { margin-top: 73px; }
+
+  /* Image blocks */
+  .section-label { padding: 32px 24px 0; }
+
+  .img-full { padding: 12px 24px 0; }
+  .img-full img { height: 56vw; min-height: 180px; }
+  .img-full.img-tall img { height: 70vw; }
+  .img-full.img-short img { height: 44vw; }
+  .img-full.img-plan { padding: 12px 24px 0; }
+  .img-full.img-plan img { height: 50vw; }
+
+  /* On mobile: band stacks vertically, each image full width */
+  .img-band {
+    padding: 12px 24px 0;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .img-band img {
+    width: 100% !important;  /* override JS-set widths */
+    height: auto !important;
+  }
+
+  .captions { padding: 8px 24px 0; flex-direction: column; gap: 2px; }
+
+  .divider { margin: 40px 24px 0; }
+  .spacer { height: 48px; }
+
+  .next-project { padding: 48px 24px; margin-top: 48px; }
+
+  footer { padding: 32px 24px; flex-direction: column; gap: 8px; }
+}

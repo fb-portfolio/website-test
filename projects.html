@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FB — Projects</title>
+  <link rel="stylesheet" href="main.css" />
+  <script src="main.js" defer></script>
+  <style>
+/* NAV */
+    
+
+    
+
+    
+
+    
+
+    
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 160px 56px 64px;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 8vw, 8rem);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--black);
+    }
+
+    .page-header p {
+      margin-top: 16px;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* PROJECT LIST */
+    .projects-list {
+      padding: 0 56px;
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0;
+      border-bottom: 1px solid var(--light);
+      padding: 72px 0;
+      align-items: center;
+    }
+
+    .project-item:nth-child(odd) .project-image-wrap  { grid-column: 1 / 8; }
+    .project-item:nth-child(odd) .project-info        { grid-column: 9 / 13; }
+    .project-item:nth-child(even) .project-image-wrap { grid-column: 6 / 13; }
+    .project-item:nth-child(even) .project-info       { grid-column: 1 / 5; order: -1; }
+
+    .project-image-wrap {
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--light);
+    }
+
+    .project-image-wrap a { display: block; width: 100%; height: 100%; }
+
+    .project-image-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+
+    .project-image-wrap:hover img { transform: scale(1.03); }
+
+    .project-info {
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .project-number {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .project-info h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .project-info h2 a {
+      text-decoration: none;
+      color: var(--black);
+      transition: opacity 0.2s;
+    }
+
+    .project-info h2 a:hover { opacity: 0.5; }
+
+    .project-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .project-meta span {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .project-excerpt {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: #555;
+      max-width: 320px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      transition: gap 0.2s;
+      margin-top: 8px;
+    }
+
+    .project-link:hover { gap: 18px; }
+    .project-link::after { content: '→'; font-size: 1rem; }
+
+    /* ARCHIVE */
+    .archive-section {
+      padding: 64px 56px;
+      border-top: 1px solid var(--light);
+    }
+
+    .archive-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--light);
+      border: 1px solid var(--light);
+    }
+
+    .archive-item {
+      background: var(--white);
+      padding: 32px;
+      text-decoration: none;
+      color: var(--black);
+      transition: background 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .archive-item:hover { background: var(--light); }
+
+    .archive-item h4 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    .archive-item span {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* FOOTER */
+    
+
+    
+
+    /* Animations */
+    
+    }
+
+    .project-image-wrap { animation: fadeUp 0.8s ease both; }
+    .project-info       { animation: fadeUp 0.8s ease both; }
+
+    .project-item:nth-child(1) .project-image-wrap { animation-delay: 0.1s; }
+    .project-item:nth-child(1) .project-info       { animation-delay: 0.2s; }
+    .project-item:nth-child(2) .project-image-wrap { animation-delay: 0.3s; }
+    .project-item:nth-child(2) .project-info       { animation-delay: 0.4s; }
+    .project-item:nth-child(3) .project-image-wrap { animation-delay: 0.5s; }
+    .project-item:nth-child(3) .project-info       { animation-delay: 0.6s; }
+
+    @media (max-width: 900px) {
+      
+      .page-header { padding: 120px 24px 48px; }
+      .projects-list { padding: 0 24px; }
+      .project-item {
+        grid-template-columns: 1fr;
+        padding: 48px 0;
+      }
+      .project-item:nth-child(odd) .project-image-wrap,
+      .project-item:nth-child(even) .project-image-wrap { grid-column: 1 / -1; }
+      .project-item:nth-child(odd) .project-info,
+      .project-item:nth-child(even) .project-info { grid-column: 1 / -1; order: 0; padding: 24px 0 0; }
+      .archive-grid { grid-template-columns: 1fr; }
+      .archive-section { padding: 48px 24px; }
+      
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">fb</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Architecture</a></li>
+      <li><a href="web.html">Web</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <header class="page-header">
+    <h1>Selected Work</h1>
+    <p>Architecture &amp; Urban Design</p>
+  </header>
+
+  <main class="projects-list">
+
+    <div class="project-item">
+      <div class="project-image-wrap">
+        <a href="projects/wohnscheune/index.html">
+          <img src="projects/wohnscheune/images/rendering_exterior.jpg" alt="Wohnscheune" style="object-position: center 50%;" />
+        </a>
+      </div>
+      <div class="project-info">
+        <span class="project-number">01</span>
+        <h2><a href="projects/wohnscheune/index.html">Wohnscheune</a></h2>
+        <div class="project-meta">
+          <span>Saargau, Germany</span>
+          <span>Architectural Draft</span>
+        </div>
+        <p class="project-excerpt">A modern reinterpretation of the Trierer Einhaus — form, material, and scale respond to the village context without replicating tradition.</p>
+        <a class="project-link" href="projects/wohnscheune/index.html">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-image-wrap">
+        <a href="projects/the-tower-in-the-city/index.html">
+          <img src="projects/the-tower-in-the-city/images/4.jpg" alt="The Tower in the City" style="object-position: center 40%;" />
+        </a>
+      </div>
+      <div class="project-info">
+        <span class="project-number">02</span>
+        <h2><a href="projects/the-tower-in-the-city/index.html">The Tower in the City</a></h2>
+        <div class="project-meta">
+          <span>Prague, Czech Republic</span>
+          <span>Study Project</span>
+        </div>
+        <p class="project-excerpt">A campanile-inspired guesthouse tower extending the historic Český Yacht Klub — amplifying the club's presence without overshadowing the original 1912 building.</p>
+        <a class="project-link" href="projects/the-tower-in-the-city/index.html">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-image-wrap">
+        <a href="projects/mediterraneum/index.html">
+          <img src="projects/mediterraneum/images/rendering außen.jpg" alt="Mediterraneum" style="object-position: center 60%;" />
+        </a>
+      </div>
+      <div class="project-info">
+        <span class="project-number">03</span>
+        <h2><a href="projects/mediterraneum/index.html">Mediterraneum</a></h2>
+        <div class="project-meta">
+          <span>Bonn, Germany</span>
+          <span>Study Group Project</span>
+        </div>
+        <p class="project-excerpt">A greenhouse typology exploring the threshold between interior and exterior, cultivation and public space.</p>
+        <a class="project-link" href="projects/mediterraneum/index.html">View Project</a>
+      </div>
+    </div>
+
+  </main>
+
+  <section class="archive-section">
+    <p class="archive-label">Archive</p>
+    <div class="archive-grid">
+      <a class="archive-item" href="projects/historicum/index.html">
+        <h4>Historicum: City Archive</h4>
+        <span>Aachen Region — Study Project</span>
+      </a>
+      <a class="archive-item" href="projects/gruenguertel/index.html">
+        <h4>Grüngürtel</h4>
+        <span>Cologne — Urban Planning</span>
+      </a>
+      <a class="archive-item" href="projects/quartier-eselsweg/index.html">
+        <h4>Quartier Eselsweg</h4>
+        <span>Aachen Beverau — Urban Planning</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>fb — Architecture &amp; Design</p>
+    <p>Aachen, Germany</p>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const overlay = document.getElementById('navOverlay');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      overlay.classList.toggle('open');
+      document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+    });
+    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }));
+  </script>
+</body>
+</html>

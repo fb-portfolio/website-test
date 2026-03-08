@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FB — About</title>
+  <link rel="stylesheet" href="main.css" />
+  <script src="main.js" defer></script>
+  <style>
+    .about-grid {
+      margin-top: 85px;
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      grid-template-rows: 1fr;
+      min-height: calc(100vh - 85px - 81px);
+      border-bottom: 1px solid var(--light);
+    }
+
+    .about-photo {
+      border-right: 1px solid var(--light);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-photo img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 80% top;
+      display: block;
+      filter: grayscale(20%);
+    }
+
+    .about-text {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    .about-text h1 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 40px;
+    }
+
+    .about-text h1 em { font-style: italic; font-weight: 300; }
+
+    .about-body { max-width: 480px; }
+
+    .about-body p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .about-body p:last-of-type { margin-bottom: 0; }
+
+    .about-skills {
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--light);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 480px;
+    }
+
+    .skill-group h4 {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+
+    .skill-group ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .skill-group ul li { font-size: 0.875rem; color: var(--black); }
+
+    .about-cta {
+      margin-top: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      transition: gap 0.2s;
+    }
+
+    .about-cta:hover { gap: 16px; }
+    .about-cta::after { content: '→'; }
+
+    .about-grid { animation: fadeUp 0.8s ease 0.1s both; }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; min-height: auto; }
+      .about-photo { height: 60vw; border-right: none; border-bottom: 1px solid var(--light); }
+      .about-text { padding: 48px 24px; }
+      .about-skills { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">fb</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Architecture</a></li>
+      <li><a href="web.html">Web</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Architecture</a></li>
+      <li><a href="web.html">Web</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-photo">
+      <img src="images/portrait.jpg" alt="Portrait" />
+    </div>
+    <div class="about-text">
+      <p class="about-eyebrow">About</p>
+      <h1>F. B.<br><em>Architecture & Design</em></h1>
+      <div class="about-body">
+        <p>Architecture graduate based in Aachen — working at the intersection of spatial thinking, visual communication, and digital design.</p>
+        <p>My work spans from single-family houses rooted in vernacular tradition to urban-scale planning proposals. Alongside architectural practice, I design and build hand-coded websites — combining the same attention to structure and detail that I bring to buildings.</p>
+        <p>I believe good design is always contextual: it responds to place, purpose, and the people who use it.</p>
+      </div>
+
+      <div class="about-skills">
+        <div class="skill-group">
+          <h4>Architecture</h4>
+          <ul>
+            <li>Revit</li>
+            <li>AutoCAD</li>
+            <li>Rhino</li>
+            <li>Photoshop</li>
+            <li>InDesign</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Web & Digital</h4>
+          <ul>
+            <li>HTML / CSS</li>
+            <li>JavaScript</li>
+            <li>Static Sites</li>
+            <li>AI-assisted Design</li>
+          </ul>
+        </div>
+      </div>
+
+      <a class="about-cta" href="contact.html">Get in touch</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>fb — Architecture &amp; Design</p>
+    <p><a href="impressum.html">Impressum</a></p>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const overlay = document.getElementById('navOverlay');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      overlay.classList.toggle('open');
+      document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+    });
+    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }));
+  </script>
+
+</body>
+</html>

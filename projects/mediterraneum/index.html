@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FB — Mediterraneum</title>
+  <link rel="stylesheet" href="../../main.css" />
+  <script src="../../main.js" defer></script>
+  <script src="../../band.js" defer></script>
+  <style>
+    .hero {
+      width: 100%;
+      height: 90vh;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      display: block;
+    }
+
+    .project-intro {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .intro-title {
+      padding: 72px 56px;
+      border-right: 1px solid var(--light);
+    }
+
+    .intro-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gray);
+      margin-bottom: 40px;
+      transition: gap 0.2s, color 0.2s;
+    }
+
+    .intro-back:hover { gap: 12px; color: var(--black); }
+    .intro-back::before { content: '←'; }
+
+    .intro-title h1 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      margin-bottom: 32px;
+    }
+
+    .intro-title h1 em {
+      font-style: italic;
+      font-weight: 300;
+      display: block;
+    }
+
+    .intro-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .intro-meta span {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .intro-text {
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .intro-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 20px;
+      max-width: 560px;
+    }
+
+    .intro-text p:last-of-type { margin-bottom: 0; }
+
+    .read-more-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      padding: 0;
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .read-more-btn:hover { color: var(--black); gap: 12px; }
+    .read-more-btn .arrow { transition: transform 0.3s; display: inline-block; }
+    .read-more-btn.open .arrow { transform: rotate(180deg); }
+
+    .extra-text { display: none; }
+    .extra-text.visible { display: block; }
+    .extra-text p { margin-top: 20px; }
+
+    @media (max-width: 900px) {
+      .hero { height: 60vw; min-height: 260px; }
+      .project-intro { grid-template-columns: 1fr; }
+      .intro-title { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--light); }
+      .intro-text { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="../../index.html">fb</a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../projects.html">Architecture</a></li>
+      <li><a href="../../web.html">Web</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../projects.html">Architecture</a></li>
+      <li><a href="../../web.html">Web</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO — goldenes Gegenlicht-Rendering -->
+  <div class="hero page-start fade-up-1">
+    <img src="images/rendering außen.jpg" alt="Mediterraneum — Exterior Rendering" data-lightbox />
+  </div>
+
+  <!-- INTRO -->
+  <div class="project-intro fade-up-2">
+    <div class="intro-title">
+      <a class="intro-back" href="../../projects.html">Architecture</a>
+      <h1>Mediter-<br><em>raneum</em></h1>
+      <div class="intro-meta">
+        <span>Bonn, Germany</span>
+        <span>Study Group Project</span>
+        <span>2017</span>
+      </div>
+    </div>
+    <div class="intro-text">
+      <p>A greenhouse typology inserted into an existing courtyard in Bonn — a glass and steel structure that brings Mediterranean climate and vegetation into the heart of the city.</p>
+      <p>The project explores the greenhouse as an architectural type: a structure defined entirely by its skin, where the frame becomes the facade and the interior is shaped by light, reflections, and the rhythm of the steel grid.</p>
+
+      <div class="extra-text" id="extraText">
+        <p>The hexagonal geometry of the floor plan derives from the idea of cellular growth — each module can stand alone or aggregate with others. The steel frame is prefabricated and bolted on site, making the structure both precise and demountable.</p>
+        <p>Inside, a curated selection of Mediterranean plants creates a microclimate that contrasts with the northern European context. The double-skin glass facade acts as a thermal buffer, collecting solar gain in winter and ventilating passively in summer.</p>
+        <p>The project was developed as a group work with a focus on construction detail and material precision.</p>
+      </div>
+
+      <button class="read-more-btn" id="readMoreBtn" onclick="toggleText()">
+        Read more <span class="arrow">↓</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- DRAWINGS — Ansicht + Schnitt + Grundriss -->
+  <div class="section-label">Drawings</div>
+
+  <div class="img-full img-plan">
+    <img src="images/ansicht und schnitt.jpg" alt="View and Section" data-lightbox />
+  </div>
+  <div class="captions"><span>View and Section</span></div>
+
+  <div class="img-full img-plan" style="padding-top: 12px;">
+    <img src="images/floorplan.jpg" alt="Floor Plan" data-lightbox />
+  </div>
+  <div class="captions"><span>Floor Plan</span></div>
+
+  <!-- CONCEPT -->
+  <div class="divider"></div>
+  <div class="section-label">Concept</div>
+
+  <div class="img-band img-band-plan">
+    <img src="images/ideas.jpg" alt="Concept — Idea" data-lightbox />
+    <img src="images/iso.jpg" alt="Isometric" data-lightbox />
+  </div>
+  <div class="captions">
+    <span>Idea</span>
+    <span>Isometric</span>
+  </div>
+
+  <!-- DETAILS -->
+  <div class="divider"></div>
+  <div class="section-label">Details</div>
+
+  <div class="img-band img-band-plan">
+    <img src="images/schnitt50 1.jpg" alt="Section 1:50" data-lightbox />
+    <img src="images/schnitt50 2.jpg" alt="Section 1:50" data-lightbox />
+  </div>
+  <div class="captions">
+    <span>Section 1:50</span>
+    <span>Section 1:50</span>
+  </div>
+
+  <div class="img-full img-plan" style="padding-top: 12px;">
+    <img src="images/details.jpg" alt="Construction Details" data-lightbox />
+  </div>
+  <div class="captions"><span>Construction Details</span></div>
+
+  <!-- INTERIOR RENDERINGS -->
+  <div class="divider"></div>
+  <div class="section-label">Renderings</div>
+
+  <div class="img-band">
+    <img src="images/render innen 1.jpg" alt="Interior — Day" data-lightbox />
+    <img src="images/render innen 2.jpg" alt="Interior — Atmosphere" data-lightbox />
+  </div>
+  <div class="captions">
+    <span>Interior — Day</span>
+    <span>Interior — Atmosphere</span>
+  </div>
+
+  <!-- NIGHT RENDERING — Abschluss -->
+  <div class="img-full img-tall" style="padding-top: 12px;">
+    <img src="images/render außen nacht.jpg" alt="Night Rendering" data-lightbox
+         style="object-position: center 40%;" />
+  </div>
+  <div class="captions"><span>Night Rendering</span></div>
+
+  <!-- MODEL -->
+  <div class="divider"></div>
+  <div class="section-label">Model</div>
+
+  <div class="img-full img-short">
+    <img src="images/modellfoto.jpg" alt="Physical Model" data-lightbox
+         style="object-position: center center;" />
+  </div>
+  <div class="captions"><span>Physical Model</span></div>
+
+  <div class="spacer"></div>
+
+  <!-- NEXT PROJECT -->
+  <a class="next-project" href="../historicum/index.html">
+    <div>
+      <p class="next-label">Next Project</p>
+      <p class="next-title">Historicum — <em>City Archive</em></p>
+    </div>
+    <span class="next-arrow">→</span>
+  </a>
+
+  <footer>
+    <p>fb — Architecture &amp; Design</p>
+    <p><a href="../../impressum.html">Impressum</a></p>
+  </footer>
+
+  <script>
+    const burger  = document.getElementById('burger');
+    const overlay = document.getElementById('navOverlay');
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      overlay.classList.toggle('open');
+      document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+    });
+
+    overlay.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    function toggleText() {
+      const extra = document.getElementById('extraText');
+      const btn   = document.getElementById('readMoreBtn');
+      extra.classList.toggle('visible');
+      btn.classList.toggle('open');
+      btn.childNodes[0].textContent = extra.classList.contains('visible') ? 'Read less ' : 'Read more ';
+    }
+  </script>
+
+</body>
+</html>
